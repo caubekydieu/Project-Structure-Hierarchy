@@ -1,3 +1,5 @@
+namespace VehicleManagementSystem.Vehicles;
+{
 public class Car : Vehicle{
     public string _model {
         get{
@@ -27,4 +29,4 @@ public class Car : Vehicle{
         Console.WriteLine("Horse Power: " + _horsePower);
     }
 }
-
+}

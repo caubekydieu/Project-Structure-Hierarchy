@@ -1,3 +1,5 @@
+namespace VehicleManagementSystem.Vehicles;
+{
 public class RaceCar : car{
     public TurboBoost(){get; set;}
     public RaceCar(){
@@ -10,4 +12,5 @@ public class RaceCar : car{
         base.DisplayInfo();
         Console.WriteLine("Turbo Boost: " + _turboBoost);
     }
+}
 }
