@@ -8,6 +8,7 @@ namespace VehicleManagementSystem.Vehicles
         private string _name;
         private double _price;
         private double _speed;
+        private string _vehicleType;
         public string Name{
             get{
                 return _name;
