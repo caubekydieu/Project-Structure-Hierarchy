@@ -1,16 +1,18 @@
+using System;
+
 namespace VehicleManagementSystem.Vehicles;
 {
 public class Truck : Vehicle{
-    public double _loadCapacity{ get; set;}
+    public double LoadCapacity { get; set; }
     public Truck(){
-        _vehicleType = "Truck";
+        VehicleType = "Truck";
     };
-    public override void CalculateTax(){
-        return 0.2 * _price;
+    public override double CalculateTax(){
+        return 0.2 * Price;
     }   
     public override void DisplayInfo(){ 
         base.DisplayInfo();
-        Console.WriteLine("Load Capacity: " + _loadCapacity);
+        Console.WriteLine("Load Capacity: " + LoadCapacity);
     }
 }
 }

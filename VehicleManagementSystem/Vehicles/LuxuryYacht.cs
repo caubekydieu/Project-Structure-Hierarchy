@@ -1,16 +1,18 @@
+using System;
+
 namespace VehicleManagementSystem.Vehicles;
 {
 public class LuxuryYacht : Boat{
-    public double _helipad{ get; set;}
+    public double Helipad { get; set; }
     public LuxuryYacht(){
-        _vehicleType = "Luxury Yacht";
+        VehicleType = "Luxury Yacht";
     };
-    public override void CalculateTax(){
-        return 0.05 * _price;
+    public override double CalculateTax(){
+        return 0.05 * Price;
     }
     public override void DisplayInfo(){ 
         base.DisplayInfo();
-        Console.WriteLine("Helipad: " + _helipad);
+        Console.WriteLine("Helipad: " + Helipad);
     }
 }
 }

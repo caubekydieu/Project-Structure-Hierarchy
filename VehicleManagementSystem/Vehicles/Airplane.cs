@@ -1,17 +1,24 @@
-namespace VehicleManagementSystem.Vehicles;
+using System;
+
+namespace VehicleManagementSystem.Vehicles
 {
-public class Airplane : Vehicle{
-    public double _altitude{ get; set;}
-    public Airplane(){
-        _vehicleType = "Airplane";
-    };
-    public override void CalculateTax(){
-        return 0.15 * _price;
+    public class Airplane : Vehicle
+    {
+        public double Altitude { get; set; }
+        
+        public Airplane()
+        {
+            VehicleType = "Airplane";
+        }
+        
+        public override double CalculateTax()
+        {
+            return 0.15 * Price;
+        }
+        
+        public override void DisplayInfo(){
+            base.DisplayInfo();
+            Console.WriteLine("Altitude: " + Altitude);
+        }
     }
-    public override void DisplayInfo(){
-        base.DisplayInfo();
-        Console.WriteLine("Altitude: " + _altitude);
-    }
-    
-}
 }

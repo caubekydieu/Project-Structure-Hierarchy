@@ -1,16 +1,18 @@
+using System;
+
 namespace VehicleManagementSystem.Vehicles;
 {
-public class RaceCar : car{
-    public TurboBoost(){get; set;}
+public class RaceCar : Car{
+    public double TurboBoost { get; set; }
     public RaceCar(){
-        _vehicleType = "Race Car";
+        VehicleType = "Race Car";
     }
-    public override void CalculateTax(){
-        return 0.1 * _price;
+    public override double CalculateTax(){
+        return 0.1 * Price;
     }
     public override void DisplayInfo(){
         base.DisplayInfo();
-        Console.WriteLine("Turbo Boost: " + _turboBoost);
+        Console.WriteLine("Turbo Boost: " + TurboBoost);
     }
 }
 }

@@ -1,32 +1,41 @@
-namespace VehicleManagementSystem.Vehicles;
+using System;
+
+namespace VehicleManagementSystem.Vehicles
 {
-public class Car : Vehicle{
-    public string _model {
-        get{
-            return _model;
+    public class Car : Vehicle{
+        private string _modelValue;
+        private string _horsePowerValue;
+        
+        public string Model {
+            get
+            {
+                return _modelValue;
+            }
+            set
+            {
+                _modelValue = value;
+            }
         }
-        set{
-            _model = value;
+        public string HorsePower{
+            get
+            {
+                return _horsePowerValue;
+            }
+            set
+            {
+                _horsePowerValue = value;
+            }
         }
-    };
-    public string _horsePower{
-        get{
-            return _horsePower;
+        public Car(){
+            VehicleType = "Car";
         }
-        set{
-            _horsePower = value;
+        public override double CalculateTax(){
+            return 0.1 * Price;
         }
-    };
-    public Car(){
-        _vehicleType = "Car";
-    };
-    public override void CalculateTax(){
-        return 0.1 * _price;
+        public override void DisplayInfo(){
+            base.DisplayInfo();
+            Console.WriteLine("Model: " + Model);
+            Console.WriteLine("Horse Power: " + HorsePower);
+        }
     }
-    public override void DisplayInfo(){
-        base.DisplayInfo();
-        Console.WriteLine("Model: " + _model);
-        Console.WriteLine("Horse Power: " + _horsePower);
-    }
-}
 }

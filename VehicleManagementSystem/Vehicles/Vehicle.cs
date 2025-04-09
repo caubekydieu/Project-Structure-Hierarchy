@@ -22,6 +22,8 @@ namespace VehicleManagementSystem.Vehicles
                 return _price;
             }
             set{
+                if (value < 0)
+                    throw new InvalidPriceException("Price cannot be negative");
                 _price = value;
             }
         }
@@ -30,6 +32,8 @@ namespace VehicleManagementSystem.Vehicles
                 return _speed;
             }
             set{
+                if (value <= 0)
+                    throw new InvalidSpeedException("Speed must be greater than zero");
                 _speed = value;
             }
         }
@@ -47,7 +51,7 @@ namespace VehicleManagementSystem.Vehicles
             Console.WriteLine("Speed: " + _speed);
             Console.WriteLine("Vehicle Type: " + _vehicleType);
         }
-        abstract public void CalculateTax();
+        abstract public double CalculateTax();
         //empty 
     }
 }

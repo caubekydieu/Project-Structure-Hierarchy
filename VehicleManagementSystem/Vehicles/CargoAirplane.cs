@@ -1,17 +1,19 @@
-namespace VehicleManagementSystem.Vehicles;
-{
-public class CargoAirplane : Airplane{
-    public double _cargoCapacity{ get; set}
-    public CargoAirplane(){
+using System;
 
-        _vehicleType = "Cargo Airplane";
-    };
-    public override void CalculateTax(){
-        return 0.15 * _price;
+namespace VehicleManagementSystem.Vehicles
+{
+    public class CargoAirplane : Airplane{
+        public double CargoCapacity { get; set; }
+        public CargoAirplane(){
+            VehicleType = "Cargo Airplane";
+        }
+        
+        public override double CalculateTax(){
+            return 0.15 * Price;
+        }
+        public override void DisplayInfo(){
+            base.DisplayInfo();
+            Console.WriteLine("Cargo Capacity: " + CargoCapacity);
+        }
     }
-    public override void DisplayInfo(){
-        base.DisplayInfo();
-        Console.WriteLine("Cargo Capacity: " + _cargoCapacity);
-    }
-}
 }

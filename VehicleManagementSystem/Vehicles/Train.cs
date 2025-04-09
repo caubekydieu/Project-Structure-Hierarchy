@@ -1,16 +1,18 @@
+using System;
+
 namespace VehicleManagementSystem.Vehicles;
 {
 public class Train : Vehicle{
-    public double _units{ get; set;}
+    public double Units { get; set; }
     public Train(){
-        _vehicleType = "Train";
+        VehicleType = "Train";
     };
-    public override void CalculateTax(){
-        return 0.2 * _price;
+    public override double CalculateTax(){
+        return 0.2 * Price;
     }
     public override void DisplayInfo(){
         base.DisplayInfo();
-        Console.WriteLine("Units: " + _units);
+        Console.WriteLine("Units: " + Units);
     }
 }
 }
