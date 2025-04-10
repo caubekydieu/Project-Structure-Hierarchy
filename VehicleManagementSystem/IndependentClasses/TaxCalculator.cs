@@ -19,7 +19,7 @@ namespace VehicleManagementSystem.IndependentClasses
             }
             return totalTax;
         }
-        
+
         public double GetTaxRate(string vehicleType)
         {
             switch(vehicleType.ToLower())

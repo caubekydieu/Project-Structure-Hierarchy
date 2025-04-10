@@ -2,12 +2,10 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using VehicleManagementSystem.Vehicles;
-
 namespace VehicleManagementSystem.IndependentClasses
 {
     public class VehicleStatistics
     {
-        // Tính giá trung bình của tất cả phương tiện
         public double GetAveragePrice(Vehicle[] vehicles)
         {
             if(vehicles == null || vehicles.Length == 0)
@@ -16,7 +14,6 @@ namespace VehicleManagementSystem.IndependentClasses
             return vehicles.Average(v => v.Price);
         }
         
-        // Tìm phương tiện nhanh nhất trong mỗi loại
         public Dictionary<string, Vehicle> GetFastestVehiclesByType(Vehicle[] vehicles)
         {
             if(vehicles == null || vehicles.Length == 0)
@@ -29,8 +26,6 @@ namespace VehicleManagementSystem.IndependentClasses
                     group => group.OrderByDescending(v => v.Speed).First()
                 );
         }
-        
-        // Đếm số lượng mỗi loại phương tiện
         public Dictionary<string, int> CountVehiclesByType(Vehicle[] vehicles)
         {
             if(vehicles == null || vehicles.Length == 0)
@@ -43,8 +38,6 @@ namespace VehicleManagementSystem.IndependentClasses
                     group => group.Count()
                 );
         }
-        
-        // Tìm tất cả xe tải có LoadCapacity > giá trị cho trước
         public Truck[] GetTrucksWithLoadCapacityGreaterThan(Vehicle[] vehicles, double minCapacity)
         {
             if(vehicles == null || vehicles.Length == 0)
@@ -67,7 +60,6 @@ namespace VehicleManagementSystem.IndependentClasses
                 .ToArray();
         }
         
-        // Tìm phương tiện đắt nhất
         public Vehicle GetMostExpensiveVehicle(Vehicle[] vehicles)
         {
             if(vehicles == null || vehicles.Length == 0)
@@ -78,7 +70,6 @@ namespace VehicleManagementSystem.IndependentClasses
                 .First();
         }
         
-        // Tính giá trung bình của mỗi loại phương tiện
         public Dictionary<string, double> GetAveragePriceByType(Vehicle[] vehicles)
         {
             if(vehicles == null || vehicles.Length == 0)

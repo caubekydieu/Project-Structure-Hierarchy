@@ -1,11 +1,10 @@
 using System;
 using VehicleManagementSystem.Vehicles;
-
 namespace VehicleManagementSystem.IndependentClasses
 {
     public class VehicleComparer
     {
-        public void SortByPrice(Vehicle[] vehicles)
+        public static void SortByPrice(Vehicle[] vehicles)
         {
             for(int i = 0; i < vehicles.Length - 1; i++)
             {
@@ -20,7 +19,7 @@ namespace VehicleManagementSystem.IndependentClasses
                 }
             }
         }   
-        public void SortBySpeed(Vehicle[] vehicles)
+        public static void SortBySpeed(Vehicle[] vehicles)
         {
             for(int i = 0; i < vehicles.Length - 1; i++)
             {
@@ -35,7 +34,7 @@ namespace VehicleManagementSystem.IndependentClasses
                 }
             }
         } 
-        public void SortByType(Vehicle[] vehicles)
+        public static void SortByType(Vehicle[] vehicles)
         {
             for(int i = 0; i < vehicles.Length - 1; i++)
             {
