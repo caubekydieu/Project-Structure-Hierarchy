@@ -5,13 +5,11 @@ namespace VehicleManagementSystem.IndependentClasses
 {
     public class TaxCalculator
     {
-        public double CalculateTax(Vehicle vehicle)
-        {
+        public double CalculateTax(Vehicle vehicle){
             return vehicle.CalculateTax();
         }
         
-        public double CalculateTotalTax(Vehicle[] vehicles)
-        {
+        public double CalculateTotalTax(Vehicle[] vehicles){
             double totalTax = 0;
             foreach(var vehicle in vehicles)
             {
@@ -19,9 +17,7 @@ namespace VehicleManagementSystem.IndependentClasses
             }
             return totalTax;
         }
-
-        public double GetTaxRate(string vehicleType)
-        {
+        public double GetTaxRate(string vehicleType){
             switch(vehicleType.ToLower())
             {
                 case "car":

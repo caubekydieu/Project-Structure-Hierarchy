@@ -9,7 +9,7 @@ namespace VehicleManagementSystem.Vehicles
             get { return _cargoCapacityValue; }
             set
             {
-                if (value <=0 or value >500000)
+                if (value <= 0 || value > 500000)
                     throw new InvalidCargoCapacityException("capacity must between 0 and 500,000 kg");
                 _cargoCapacityValue = value;
             }

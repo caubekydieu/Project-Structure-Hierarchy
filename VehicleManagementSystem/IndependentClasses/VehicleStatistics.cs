@@ -49,7 +49,7 @@ namespace VehicleManagementSystem.IndependentClasses
                 .ToArray();
         }
         
-        // Tìm tất cả phương tiện có tốc độ lớn hơn giá trị cho trước
+
         public Vehicle[] GetVehiclesFasterThan(Vehicle[] vehicles, double minSpeed)
         {
             if(vehicles == null || vehicles.Length == 0)
