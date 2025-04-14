@@ -3,12 +3,19 @@ using VehicleManagementSystem.Exceptions;
 
 namespace VehicleManagementSystem.Vehicles
 {
-    public abstract class Vehicle
+    /// <summary>
+    /// Lớp cơ sở trừu tượng cho tất cả các loại phương tiện
+    /// </summary>
+    public abstract class Vehicle : IVehicle
     {
         private string _name;
         private double _price;
         private double _speed;
         private string _vehicleType;
+        
+        /// <summary>
+        /// Tên phương tiện
+        /// </summary>
         public string Name{
             get{
                 return _name;
@@ -17,6 +24,10 @@ namespace VehicleManagementSystem.Vehicles
                 _name = value;
             }
         }
+        
+        /// <summary>
+        /// Giá phương tiện
+        /// </summary>
         public double Price{
             get{
                 return _price;
@@ -27,6 +38,10 @@ namespace VehicleManagementSystem.Vehicles
                 _price = value;
             }
         }
+        
+        /// <summary>
+        /// Tốc độ phương tiện
+        /// </summary>
         public double Speed{
             get{
                 return _speed;
@@ -37,6 +52,10 @@ namespace VehicleManagementSystem.Vehicles
                 _speed = value;
             }
         }
+        
+        /// <summary>
+        /// Loại phương tiện
+        /// </summary>
         public string VehicleType{
             get{
                 return _vehicleType;
@@ -45,13 +64,33 @@ namespace VehicleManagementSystem.Vehicles
                 _vehicleType = value;
             }
         }
-        virtual public void DisplayInfo(){
+        
+        /// <summary>
+        /// Hiển thị thông tin phương tiện
+        /// </summary>
+        public virtual void DisplayInfo(){
             Console.WriteLine("Name: " + _name);
             Console.WriteLine("Price: " + _price);
             Console.WriteLine("Speed: " + _speed);
             Console.WriteLine("Vehicle Type: " + _vehicleType);
         }
-        abstract public double CalculateTax();
-        //empty 
+        
+        /// <summary>
+        /// Tính toán thuế cho phương tiện
+        /// </summary>
+        /// <returns>Giá trị thuế</returns>
+        public abstract double CalculateTax();
+        
+        /// <summary>
+        /// Kiểm tra tính hợp lệ của phương tiện
+        /// </summary>
+        /// <returns>True nếu phương tiện hợp lệ, False nếu không</returns>
+        public virtual bool IsValid()
+        {
+            return !string.IsNullOrEmpty(_name) && 
+                   _price >= 0 && 
+                   _speed > 0 && 
+                   !string.IsNullOrEmpty(_vehicleType);
+        }
     }
 }

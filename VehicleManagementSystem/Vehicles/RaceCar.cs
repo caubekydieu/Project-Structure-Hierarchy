@@ -1,6 +1,6 @@
 using System;
 
-namespace VehicleManagementSystem.Vehicles;
+namespace VehicleManagementSystem.Vehicles
 {
 public class RaceCar : Car{
     public double TurboBoost { get; set; }
