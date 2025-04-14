@@ -12,7 +12,7 @@ public class Boat : Vehicle{
     }
     public override void DisplayInfo(){
         base.DisplayInfo();
-        Console.WriteLine("Seating Capacity: " + SeatingCapacity);
+        Console.WriteLine($"Seating Capacity: {SeatingCapacity}");
     }
 }
 }

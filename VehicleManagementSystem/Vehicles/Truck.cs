@@ -12,7 +12,7 @@ public class Truck : Vehicle{
     }   
     public override void DisplayInfo(){ 
         base.DisplayInfo();
-        Console.WriteLine("Load Capacity: " + LoadCapacity);
+        Console.WriteLine($"Load Capacity: {LoadCapacity}");
     }
 }
 }

@@ -34,8 +34,8 @@ namespace VehicleManagementSystem.Vehicles
         }
         public override void DisplayInfo(){
             base.DisplayInfo();
-            Console.WriteLine("Model: " + Model);
-            Console.WriteLine("Horse Power: " + HorsePower);
+            Console.WriteLine($"Model: {Model}");
+            Console.WriteLine($"Horse Power: {HorsePower}");
         }
     }
 }

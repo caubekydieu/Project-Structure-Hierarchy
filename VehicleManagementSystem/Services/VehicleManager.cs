@@ -64,17 +64,41 @@ namespace VehicleManagementSystem.Services
 
         public void SortVehiclesByPrice()
         {
-            VehicleComparer.SortByPrice(vehicles);
+            if (count > 0)
+            {
+                Vehicle[] activeVehicles = new Vehicle[count];
+                Array.Copy(vehicles, activeVehicles, count);
+                
+                VehicleComparer.SortByPrice(activeVehicles);
+                
+                Array.Copy(activeVehicles, vehicles, count);
+            }
         }
 
         public void SortVehiclesBySpeed()
         {
-            VehicleComparer.SortBySpeed(vehicles);
+            if (count > 0)
+            {
+                Vehicle[] activeVehicles = new Vehicle[count];
+                Array.Copy(vehicles, activeVehicles, count);
+                
+                VehicleComparer.SortBySpeed(activeVehicles);
+                
+                Array.Copy(activeVehicles, vehicles, count);
+            }
         }
 
         public void SortVehiclesByType()
         {
-            VehicleComparer.SortByType(vehicles);
+            if (count > 0)
+            {
+                Vehicle[] activeVehicles = new Vehicle[count];
+                Array.Copy(vehicles, activeVehicles, count);
+                
+                VehicleComparer.SortByType(activeVehicles);
+                
+                Array.Copy(activeVehicles, vehicles, count);
+            }
         }
 
         public void DisplayVehicleStatistics()

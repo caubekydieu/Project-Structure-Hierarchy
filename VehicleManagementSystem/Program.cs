@@ -81,15 +81,68 @@ namespace VehicleManagementSystem{
                 Console.Write("Enter speed: ");
                 double speed = double.Parse(Console.ReadLine());
 
-                Vehicle vehicle = CreateVehicle(type, name, price, speed);
+                Vehicle vehicle = null;
+                switch (type.ToLower())
+                {
+                    case "car":
+                        Console.Write("Enter model: ");
+                        string model = Console.ReadLine();
+                        Console.Write("Enter horse power: ");
+                        string horsePower = Console.ReadLine();
+                        vehicle = new Car { Name = name, Price = price, Speed = speed, Model = model, HorsePower = horsePower };
+                        break;
+                    case "racecar":
+                        Console.Write("Enter model: ");
+                        model = Console.ReadLine();
+                        Console.Write("Enter horse power: ");
+                        horsePower = Console.ReadLine();
+                        Console.Write("Enter turbo boost: ");
+                        double turboBoost = double.Parse(Console.ReadLine());
+                        vehicle = new RaceCar { Name = name, Price = price, Speed = speed, Model = model, HorsePower = horsePower, TurboBoost = turboBoost };
+                        break;
+                    case "airplane":
+                        Console.Write("Enter altitude: ");
+                        double altitude = double.Parse(Console.ReadLine());
+                        vehicle = new Airplane { Name = name, Price = price, Speed = speed, Altitude = altitude };
+                        break;
+                    case "cargoairplane":
+                        Console.Write("Enter altitude: ");
+                        altitude = double.Parse(Console.ReadLine());
+                        Console.Write("Enter cargo capacity: ");
+                        double cargoCapacity = double.Parse(Console.ReadLine());
+                        vehicle = new CargoAirplane { Name = name, Price = price, Speed = speed, Altitude = altitude, CargoCapacity = cargoCapacity };
+                        break;
+                    case "boat":
+                        Console.Write("Enter seating capacity: ");
+                        double seatingCapacity = double.Parse(Console.ReadLine());
+                        vehicle = new Boat { Name = name, Price = price, Speed = speed, SeatingCapacity = seatingCapacity };
+                        break;
+                    case "luxuryyacht":
+                        Console.Write("Enter seating capacity: ");
+                        seatingCapacity = double.Parse(Console.ReadLine());
+                        Console.Write("Enter helipad (1 for yes, 0 for no): ");
+                        double helipad = double.Parse(Console.ReadLine());
+                        vehicle = new LuxuryYacht { Name = name, Price = price, Speed = speed, SeatingCapacity = seatingCapacity, Helipad = helipad };
+                        break;
+                    case "truck":
+                        Console.Write("Enter load capacity: ");
+                        double loadCapacity = double.Parse(Console.ReadLine());
+                        vehicle = new Truck { Name = name, Price = price, Speed = speed, LoadCapacity = loadCapacity };
+                        break;
+                    case "train":
+                        Console.Write("Enter number of units: ");
+                        double units = double.Parse(Console.ReadLine());
+                        vehicle = new Train { Name = name, Price = price, Speed = speed, Units = units };
+                        break;
+                    default:
+                        Console.WriteLine("Invalid vehicle type.");
+                        return;
+                }
+
                 if (vehicle != null)
                 {
                     vehicleManager.AddVehicle(vehicle);
                     Console.WriteLine("Vehicle added successfully.");
-                }
-                else
-                {
-                    Console.WriteLine("Invalid vehicle type.");
                 }
             }
             catch (FormatException){
@@ -100,30 +153,8 @@ namespace VehicleManagementSystem{
             }
         }
 
-        static Vehicle CreateVehicle(string type, string name, double price, double speed){
-            switch (type.ToLower())
-            {
-                case "car":
-                    return new Car { Name = name, Price = price, Speed = speed };
-                case "racecar":
-                    return new RaceCar { Name = name, Price = price, Speed = speed };
-                case "airplane":
-                    return new Airplane { Name = name, Price = price, Speed = speed };
-                case "cargoairplane":
-                    return new CargoAirplane { Name = name, Price = price, Speed = speed };
-                case "boat":
-                    return new Boat { Name = name, Price = price, Speed = speed };
-                case "luxuryyacht":
-                    return new LuxuryYacht { Name = name, Price = price, Speed = speed };
-                case "truck":
-                    return new Truck { Name = name, Price = price, Speed = speed };
-                case "train":
-                    return new Train { Name = name, Price = price, Speed = speed };
-                default:
-                    return null;
-            }
-        }
         static void DisplayAllVehicles(VehicleManager vehicleManager){
+            Console.WriteLine("\nSorted by Price:");
             Vehicle[] vehicles = vehicleManager.GetAllVehicles();
             foreach (var vehicle in vehicles)
             {
@@ -132,29 +163,39 @@ namespace VehicleManagementSystem{
             }
         }
         static void CalculateTaxForAllVehicles(VehicleManager vehicleManager, TaxCalculator taxCalculator){
+            Console.WriteLine("\n=== Tax Calculations ===\n");
             Vehicle[] vehicles = vehicleManager.GetAllVehicles();
+            double totalTax = 0;
+
             foreach (var vehicle in vehicles)
             {
                 double tax = taxCalculator.CalculateTax(vehicle);
-                Console.WriteLine($"Tax for {vehicle.Name} ({vehicle.VehicleType}): {tax}");
+                totalTax += tax;
+                Console.WriteLine($"Tax for {vehicle.Name} ({vehicle.VehicleType}): {tax:C}");
             }
+            
+            Console.WriteLine($"\nTotal Tax for All Vehicles: {totalTax:C}\n");
         }
 
         static void DisplayVehicleStatistics(VehicleManager vehicleManager, VehicleStatistics vehicleStatistics){
             Vehicle[] vehicles = vehicleManager.GetAllVehicles();
-            Console.WriteLine($"Average Price: {vehicleStatistics.GetAveragePrice(vehicles)}");
-            Console.WriteLine("Fastest Vehicles by Type:");
+            Console.WriteLine("\n=== Vehicle Statistics ===");
+            Console.WriteLine($"\nAverage Price: {vehicleStatistics.GetAveragePrice(vehicles):F1}");
+            
+            Console.WriteLine("\nFastest Vehicles by Type:");
             var fastestVehicles = vehicleStatistics.GetFastestVehiclesByType(vehicles);
             foreach (var entry in fastestVehicles)
             {
                 Console.WriteLine($"{entry.Key}: {entry.Value.Name} with speed {entry.Value.Speed}");
             }
-            Console.WriteLine("Vehicle Count by Type:");
+            
+            Console.WriteLine("\nVehicle Count by Type:");
             var vehicleCount = vehicleStatistics.CountVehiclesByType(vehicles);
             foreach (var entry in vehicleCount)
             {
                 Console.WriteLine($"{entry.Key}: {entry.Value}");
             }
+            Console.WriteLine();
         }
     }
 }

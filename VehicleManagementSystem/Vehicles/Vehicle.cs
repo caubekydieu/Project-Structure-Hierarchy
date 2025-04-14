@@ -69,10 +69,10 @@ namespace VehicleManagementSystem.Vehicles
         /// Hiển thị thông tin phương tiện
         /// </summary>
         public virtual void DisplayInfo(){
-            Console.WriteLine("Name: " + _name);
-            Console.WriteLine("Price: " + _price);
-            Console.WriteLine("Speed: " + _speed);
-            Console.WriteLine("Vehicle Type: " + _vehicleType);
+            Console.WriteLine($"\nName: {_name}");
+            Console.WriteLine($"Price: {_price}");
+            Console.WriteLine($"Speed: {_speed}");
+            Console.WriteLine($"VehicleType: {_vehicleType}");
         }
         
         /// <summary>

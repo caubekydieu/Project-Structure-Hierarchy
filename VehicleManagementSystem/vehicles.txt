@@ -1,1 +1,9 @@
+Train,toro,2434,4400,Train
+Car,tooyootaa,343,4356,Car
+Car,telel,5000,4335,Car
+Boat,honda,1245,3456,Boat
+Truck,gang,1400,500,Truck
 Car,hehe,133,500,Car
+Truck,eto,4000,400,Truck
+Car,ba,2000,300,Car
+Car,a,1000,200,Car

@@ -12,7 +12,7 @@ public class RaceCar : Car{
     }
     public override void DisplayInfo(){
         base.DisplayInfo();
-        Console.WriteLine("Turbo Boost: " + TurboBoost);
+        Console.WriteLine($"Turbo Boost: {TurboBoost}");
     }
 }
 }
